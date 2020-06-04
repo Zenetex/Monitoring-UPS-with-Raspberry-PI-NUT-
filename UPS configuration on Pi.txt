@@ -1,0 +1,65 @@
+# UPS configuration | path --> sudo nano /etc/nut/ups.conf
+# Network UPS Tools: example ups.conf
+#
+# --- SECURITY NOTE ---
+#
+# If you use snmp-ups and set a community string in here, you
+# will have to secure this file to keep other users from obtaining
+# that string.  It needs to be readable by upsdrvctl and any drivers,
+# and by upsd.
+#
+# ---
+#
+# This is where you configure all the UPSes that this system will be
+# monitoring directly.  These are usually attached to serial ports, but
+# USB devices and SNMP devices are also supported.
+#
+# This file is used by upsdrvctl to start and stop your driver(s), and
+# is also used by upsd to determine which drivers to monitor.  The
+# drivers themselves also read this file for configuration directives.
+#
+# The general form is:
+#
+# [upsname]
+#       driver = <drivername>
+#         port = <portname>
+#       < any other directives here >
+#
+# The section header ([upsname]) can be just about anything as long as
+# it is a single word inside brackets.  upsd uses this to uniquely
+# identify a UPS on this system.
+#
+# If you have a UPS called snoopy, your section header would be "[snoopy]".
+# On a system called "doghouse", the line in your upsmon.conf to monitor
+# it would look something like this:
+#
+#       MONITOR snoopy@doghouse 1 upsmonuser mypassword master
+#
+# It might look like this if monitoring in slave mode:
+#
+#       MONITOR snoopy@doghouse 1 upsmonuser mypassword slave
+#
+# Configuration directives
+# ------------------------
+#
+# These directives are used by upsdrvctl only and should be specified outside
+# of a driver definition:
+#
+#    maxretry: Optional.  Specify the number of attempts to start the driver(s),
+#              in case of failure, before giving up. A delay of 'retrydelay' is
+#              inserted between each attempt. Caution should be taken when using
+#              this option, since it can impact the time taken by your system to
+#              start.
+#
+#              The default is 1 attempt.
+#
+#  retrydelay: Optional.  Specify the delay between each restart attempt of the
+#              driver(s), as specified by 'maxretry'. Caution should be taken
+#              when using this option, since it can impact the time taken by your
+#              system to start.
+#
+#              The default is 5 seconds.
+#
+# These directives are common to all drivers that support ups.conf:
+#
+#  driver: REQUIRED.  Specify the program to run to talk to this UPS.
