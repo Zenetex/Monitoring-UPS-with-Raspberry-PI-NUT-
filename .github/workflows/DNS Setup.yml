@@ -39,4 +39,13 @@ jobs:
       run: |
         sudo nano /etc/dnsmasq.conf 
         
+        's/#domain-needed/domain-needed/'
+        's/#bogus\-priv/bogus\-priv/' 
+        's/#no\-resolv/no\-resolv/' 
+        's/server=/localnet/192\.168\.0\.1/server=8\.8\.8\.8 server=9\.9\.9\.9'
+        's/#cache\-size=150/cache\-size=1000/'
+        
+        sudo systemctl restart dnsmasq 
+        
+        
         
