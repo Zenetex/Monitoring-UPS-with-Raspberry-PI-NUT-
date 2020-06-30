@@ -11,7 +11,6 @@ sudo apt install dnsmasq -y
 
 # Copy the DNS Config File
 echo "Configuring DNS"
-sudo cp /etc/dnsmasq.conf dnsmasq.conf
 #Changing code for DNS configuration
 sudo cp -fr dnsmasq.conf /etc/dnsmasq.conf
 
@@ -25,7 +24,6 @@ sudo apt-get install nut nut-client nut-server -y
 
 #The path to all NUT files on PI  --> /etc/nut/
 echo "Configuring ups.conf"
-sudo cp /etc/nut/ups.conf ups.conf
 #Inputting the code for UPS
 sudo cp -fr ups.conf /etc/nut/ups.conf
 
@@ -35,7 +33,6 @@ sudo sed -i 's/# LISTEN 127.0.0.1 3493/LISTEN 127.0.0.1 3493/g' /etc/nut/upsd.co
 
 
 echo "Configuring upsd.users"
-sudo cp /etc/nut/upsd.users upsd.users
 #inputting the code to manage users
 sudo cp -fr upsd.users /etc/nut/upsd.users
 
@@ -44,13 +41,12 @@ sudo sed -i 's/MODE=none/MODE=standalone/g' /etc/nut/nut.conf
 
 
 echo "Configuring upsmon.conf"
-sudo cp /etc/nut/upsmon.conf upsmon.conf
 #Inputting the code for UPS monitoring
 sudo cp -fr upsmon.conf /etc/nut/upsmon.conf
 
 #???
-echo "Creating script to send curl command"
-curl  --request POST 'https://prod-28.eastus2.logic.azure.com:443/workflows/42517d4652c9446d8808fe0665c76088/triggers/request/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0&sig=oqY1WrPZX1_xK23Tj0h4lthuYT0vltjyW8QyRmou_GU' --header 'Content-Type: application/json' --data-raw '{ "location": "20171-00" }'
+#echo "Creating script to send curl command"
+#curl  --request POST 'https://prod-28.eastus2.logic.azure.com:443/workflows/42517d4652c9446d8808fe0665c76088/triggers/request/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0&sig=oqY1WrPZX1_xK23Tj0h4lthuYT0vltjyW8QyRmou_GU' --header 'Content-Type: application/json' --data-raw '{ "location": "20171-00" }'
 
 
 #NOTE = PutUPSNameHere
