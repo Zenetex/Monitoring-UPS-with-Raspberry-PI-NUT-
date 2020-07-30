@@ -7,7 +7,7 @@ sudo apt update # && sudo apt-get -y upgrade
 echo ""
 # Install DNS Masq
 echo "****Installing DNS****"
-sudo apt install dnsmasq -y
+sudo apt-get -y install dnsmasq
 echo ""
 # Copy the DNS Config File
 echo "****Configuring DNS****"
@@ -18,7 +18,7 @@ echo "****Restarting DNS****"
 sudo systemctl restart dnsmasq
 echo ""
 echo "****Installing NUT-CLIENT & NUT-SERVER****"
-sudo apt-get install nut nut-client nut-server -y
+sudo apt-get -y install nut nut-client nut-server
 echo ""
 #The path to all NUT files on PI  --> /etc/nut/
 echo "****Configuring ups.conf****"
